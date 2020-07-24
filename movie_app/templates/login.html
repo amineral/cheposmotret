@@ -1,0 +1,31 @@
+
+<title>Авторизация</title>
+<head>
+<h1>Login Page</h1>
+</head>
+
+<body>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<form action="{{ url_for('process_login')  }}" method="post">
+
+    <p>{{  form.hidden_tag() }}</p>
+
+    <p>Логин</p>
+    {{ form.username }}<br>
+
+<p>
+    <p>Пароль</p>
+    {{ form.password }}<br>
+</p>
+
+<p>{{ form.submit() }}</p>
+</form>
+<a href="{{ url_for('index') }}">На главную</a><br>
+</body>

@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+
+<title> Чеглянуть: {{ user.username }}</title>
+<head>
+    <h2>Привет {{ user.username }}</h2>
+</head>
+<body>
+    <a href="{{ url_for('index') }}">На главную</a><br>
+    <a href="{{ url_for('logout') }}">Выйти</a><br>
+</body>

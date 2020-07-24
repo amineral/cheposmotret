@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<title>Чеглянуть</title>
+<head>
+    <h1>Чеглянуть</h1>
+</head>
+<body>
+    {% if user %}
+       <h3>Привет, {{ user.username }}</h3>
+       <a href="{{ url_for('home') }}">Домашнаяя страница</a><br>
+       <a href="{{ url_for('logout') }}">Выйти</a><br>
+    {% else %}
+        <a href="{{ url_for('reg') }}">Регистрация</a>
+        <a href="{{ url_for('login') }}">Авторизация</a>
+    {% endif %}
+    <p>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    </p>
+    <form method="post" action="{{ url_for('add_movie') }}">
+        {{ form.hidden_tag() }}<br>
+        Какой фильм ты посмотрел<br>
+        <p>{{ form.title(size=25)}}</p>
+        Как тебе, расскажи кратко о фильме<br>
+        <p>{{ form.comment(size=25) }}</p>
+        <p>{{ form.submit }}</p>
+    </form>
+    <p>
+        {% if movies %}
+            Что было посмотрено недавно?<br>
+            {% for movie in movies %}
+                {% if movie.added_by %}
+                    <li>
+                        {{ movie }}<br>
+                        {{ movie.about }}<br>
+                        Добавил пользователь {{ movie.added_by}}<br>
+                    </li>
+                {% else %}
+                    <li>
+                        {{ movie }}<br>
+                        {{ movie.about }}<br>
+                        Добавил Анонимус<br>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            Пока ничего не посмотрели
+        {% endif %}
+    </p>
+</body>
