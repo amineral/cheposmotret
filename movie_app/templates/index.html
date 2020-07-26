@@ -32,6 +32,7 @@
     <p>
         {% if movies %}
             Что было посмотрено недавно?<br>
+            <a href="{{ url_for('history') }}">Все фильмы</a>
             {% for movie in movies %}
                 {% if movie.added_by %}
                     <li>

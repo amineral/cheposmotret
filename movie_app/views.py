@@ -109,5 +109,11 @@ def add_movie():
             flash("Такой фильм уже есть")
             return redirect(url_for('index'))
 
+@app.route('/history')
+def history():
+    movies = Movie.query.all()
+    print(movies)
+    return render_template('history.html', movies=movies)
+
 
 

@@ -33,6 +33,7 @@ class Movie(db.Model):
     title = db.Column(db.String(32), nullable=False)
     about = db.Column(db.String(100), nullable=True)
     added_by = db.Column(db.Integer, db.ForeignKey('user.username'))
+    rate = db.Column(db.Integer, nullable=True)
 
     def __repr__(self):
         return f"{self.title}"
