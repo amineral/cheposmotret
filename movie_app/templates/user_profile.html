@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<title>Профиль: {{ user.username }}</title>
+<h4>Профиль: {{ user.username }}</h4>
+<a href="{{ url_for('index') }}">На главную</a><br>
+{% if user.added_movies %}
+    Фильмы, которые добавил пользователь:
+    {% for movie in user.added_movies %}
+        <li>{{ movie }}</li>
+    {% endfor %}
+{% else %}
+    Этот пользователь не добавлял фильмы
+{% endif %}

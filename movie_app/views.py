@@ -23,6 +23,14 @@ def home():
     else:
         return redirect(url_for('login'))
 
+@app.route('/profile/<username>')
+def user_profile(username):
+    user = User.query.filter(User.username == username).first()
+    if user:
+        return render_template('user_profile.html', user=user)
+    else:
+        return "Такого пользователя не существует"
+
 ##### ---- REGISTRATION ----- #####
 @app.route('/reg', methods=["GET", "POST"])
 def reg():

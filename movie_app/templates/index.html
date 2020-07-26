@@ -37,7 +37,8 @@
                     <li>
                         {{ movie }}<br>
                         {{ movie.about }}<br>
-                        Добавил пользователь {{ movie.added_by}}<br>
+                        Добавил пользователь 
+                        <a href="{{ url_for('user_profile', username=movie.added_by) }}">{{ movie.added_by}}</a><br>
                     </li>
                 {% else %}
                     <li>
